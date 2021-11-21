@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Urkin.Exceptions</name>
+    </assembly>
+    <members>
+        <member name="T:Urkin.Exceptions.ApplicationSettingsKeyMissingException">
+            <summary>
+            The exception that is thrown when a key is missing within application settings
+            </summary>
+        </member>
+        <member name="M:Urkin.Exceptions.ApplicationSettingsKeyMissingException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Urkin.Exceptions.ApplicationSettingsKeyMissingException"/> class with the missing application setting name.
+            </summary>
+            <param name="key">The key that is missing</param>
+        </member>
+        <member name="M:Urkin.Exceptions.ApplicationSettingsKeyMissingException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Urkin.Exceptions.ApplicationSettingsKeyMissingException"/> class with the missing application setting name and the exception that is the cause of this exception.
+            </summary>
+            <param name="key">The key that is missing</param>
+            <param name="innerException">The exception that is the cause of the current exception</param>
+        </member>
+        <member name="M:Urkin.Exceptions.ApplicationSettingsKeyMissingException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Urkin.Exceptions.ApplicationSettingsKeyMissingException"/> class with serialized data.
+            </summary>
+            <param name="info">The System.Runtime.Serialization.SerializationInfo that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The System.Runtime.Serialization.StreamingContext that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.ArgumentNullException">info is null</exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or System.Exception.HResult is zero (0).</exception>
+        </member>
+    </members>
+</doc>

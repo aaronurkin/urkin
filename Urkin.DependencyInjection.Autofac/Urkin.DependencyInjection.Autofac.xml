@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Urkin.DependencyInjection.Autofac</name>
+    </assembly>
+    <members>
+        <member name="T:Urkin.DependencyInjection.Autofac.AutofacDependenciesResolver">
+            <summary>
+            Provides actions to resolve application dependencies using Autofac IoC container 
+            </summary>
+        </member>
+        <member name="M:Urkin.DependencyInjection.Autofac.AutofacDependenciesResolver.#ctor(Autofac.ILifetimeScope)">
+            <summary>
+            Constructor initializes <see cref="T:Autofac.ILifetimeScope"/> parameter
+            </summary>
+            <param name="lifetimeScope">The <see cref="T:Autofac.ILifetimeScope"/> parameter</param>
+        </member>
+        <member name="M:Urkin.DependencyInjection.Autofac.AutofacDependenciesResolver.Resolve``1(System.Object[])">
+            <summary>
+            Retrieves a service from the DI container by a key
+            </summary>
+            <typeparam name="TService">The type to which the result will be cast</typeparam>
+            <param name="constructorArguments">Constructor arguments</param>
+            <returns>The component instance that provides the service</returns>
+            <exception cref="T:Autofac.Core.DependencyResolutionException"></exception>
+            <exception cref="T:Autofac.Core.Registration.ComponentNotRegisteredException"></exception>
+        </member>
+        <member name="M:Urkin.DependencyInjection.Autofac.AutofacDependenciesResolver.ResolveKeyed``1(System.Object[])">
+            <summary>
+            Retrieves a service from the DI container by a key
+            </summary>
+            <typeparam name="TService">The type to which the result will be cast</typeparam>
+            <param name="constructorArguments">The first argument is a key of the service. Other argument are constructor arguments</param>
+            <returns>The component instance that provides the service</returns>
+            <exception cref="T:Autofac.Core.DependencyResolutionException"></exception>
+            <exception cref="T:Autofac.Core.Registration.ComponentNotRegisteredException"></exception>
+        </member>
+        <member name="M:Urkin.DependencyInjection.Autofac.AutofacDependenciesResolver.ResolveNamed``1(System.Collections.Generic.IEnumerable{System.String},System.Object[])">
+            <summary>
+            Retrieves a service from the DI container by the first appearance of a name from the names parameter 
+            </summary>
+            <typeparam name="TService">The type to which the result will be cast</typeparam>
+            <param name="names">Collection of names to retrieve a service by</param>
+            <param name="constructorArguments">Constructor arguments</param>
+            <returns>The component instance that provides the service</returns>
+            <exception cref="T:Autofac.Core.DependencyResolutionException"></exception>
+            <exception cref="T:Autofac.Core.Registration.ComponentNotRegisteredException"></exception>
+        </member>
+        <member name="M:Urkin.DependencyInjection.Autofac.AutofacDependenciesResolver.ResolveAll``1">
+            <summary>
+            Retrieves all implementations of a service from the DI container
+            </summary>
+            <typeparam name="TService">The type to which the result will be cast</typeparam>
+            <returns>The collection of the service instances</returns>
+        </member>
+        <member name="M:Urkin.DependencyInjection.Autofac.AutofacDependenciesResolver.ResolveAllKeyed``1(System.Object)">
+            <summary>
+            Retrieves all implementations of a service from the DI container by a key
+            </summary>
+            <typeparam name="TService">The type to which the result will be cast</typeparam>
+            <param name="key">The key to retrieve a service by</param>
+            <returns>The collection of the service instances</returns>
+        </member>
+        <member name="M:Urkin.DependencyInjection.Autofac.AutofacDependenciesResolver.ResolveAllNamed``1(System.String[])">
+            <summary>
+            Retrieves all implementations of a service from the DI container by the first appearance of a name from the names parameter 
+            </summary>
+            <typeparam name="TService">The type to which the service will be cast</typeparam>
+            <param name="names">Collection of names to retrieve a service by</param>
+            <returns>The collection of the service instances</returns>
+        </member>
+    </members>
+</doc>

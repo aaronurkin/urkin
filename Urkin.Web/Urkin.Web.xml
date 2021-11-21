@@ -1,0 +1,803 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Urkin.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Urkin.Web.ApiControllerBase">
+            <summary>
+            A base class for an API controller without view support.
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.ApiControllerBase.#ctor(Urkin.Web.IHttpRequestHandler)">
+            <summary>
+            Constructor initializing <see cref="T:Urkin.Web.IHttpRequestHandler"/>.
+            </summary>
+            <param name="requestHandler">An instance of the <see cref="T:Urkin.Web.IHttpRequestHandler"/>.</param>
+        </member>
+        <member name="P:Urkin.Web.ApiControllerBase.RequestHandler">
+            <summary>
+            Gets the <see cref="T:Urkin.Web.IHttpRequestHandler"/> to handle a request.
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.ApiControllerBase.Handle``1(``0)">
+            <summary>
+            Handles a request and resolves a <see cref="T:Microsoft.AspNetCore.Mvc.StatusCodeResult"/> object by specifying a statusCode
+            with or without value according to a request handler result.
+            </summary>
+            <typeparam name="TRequest">The type of the request body.</typeparam>
+            <param name="request">The request instance to handle.</param>
+            <returns>The created <see cref="T:Microsoft.AspNetCore.Mvc.StatusCodeResult"/> object for the response.</returns>
+        </member>
+        <member name="T:Urkin.Web.DefaultHttpRequestHandler">
+            <summary>
+            Default implementation of the <see cref="T:Urkin.Web.IHttpRequestHandler"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.DefaultHttpRequestHandler.#ctor(Microsoft.Extensions.Logging.ILogger{Urkin.Web.DefaultHttpRequestHandler},Urkin.DependencyInjection.IDependenciesResolver)">
+            <summary>
+            Constructor initializes the <see cref="T:Microsoft.Extensions.Logging.ILogger"/> and <see cref="T:Urkin.DependencyInjection.IDependenciesResolver"/> instances
+            </summary>
+            <param name="logger">The logger instance</param>
+            <param name="dependenciesResolver">The resolver instance</param>
+        </member>
+        <member name="M:Urkin.Web.DefaultHttpRequestHandler.Handle``1(``0)">
+            <summary>
+            Handles typed HTTP requests and inverts control to the appropriate service
+            </summary>
+            <typeparam name="TRequest">The type of the request</typeparam>
+            <param name="request">The request to handle</param>
+            <returns>An instance of <see cref="T:Urkin.Models.HttpRequestHandlerResult"/></returns>
+        </member>
+        <member name="T:Urkin.Web.IHttpRequestHandler">
+            <summary>
+            Provides actions to handle typed HTTP requests
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.IHttpRequestHandler.Handle``1(``0)">
+            <summary>
+            Handles typed HTTP requests and inverts control to the appropriate service
+            </summary>
+            <typeparam name="TRequest">The type of the request</typeparam>
+            <param name="request">The request to handle</param>
+            <returns>An instance of <see cref="T:Urkin.Models.HttpRequestHandlerResult"/></returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode100ContinueResolver">
+            <summary>
+            Represents 100 (continue) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode100ContinueResolver.Resolve">
+            <summary>
+            Returns 100 (continue) HTTP status code
+            </summary>
+            <returns>HTTP status code 100 (continue)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode101SwitchingProtocolsResolver">
+            <summary>
+            Represents 101 (switching protocols) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode101SwitchingProtocolsResolver.Resolve">
+            <summary>
+            Returns 101 (switching protocols) HTTP status code
+            </summary>
+            <returns>HTTP status code 101 (switching protocols)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode102ProcessingResolver">
+            <summary>
+            Represents 102 (processing) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode102ProcessingResolver.Resolve">
+            <summary>
+            Returns 102 (processing) HTTP status code
+            </summary>
+            <returns>HTTP status code 102 (processing)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode103EarlyHintsResolver">
+            <summary>
+            Represents 103 (early hints) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode103EarlyHintsResolver.Resolve">
+            <summary>
+            Returns 103 (early hints) HTTP status code
+            </summary>
+            <returns>HTTP status code 103 (early hints)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode200OkResolver">
+            <summary>
+            Represents 200 (ok) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode200OkResolver.Resolve">
+            <summary>
+            Returns 200 (ok) HTTP status code
+            </summary>
+            <returns>HTTP status code 200 (ok)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode201CreatedResolver">
+            <summary>
+            Represents 201 (created) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode201CreatedResolver.Resolve">
+            <summary>
+            Returns 201 (created) HTTP status code
+            </summary>
+            <returns>HTTP status code 201 (created)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode202AcceptedResolver">
+            <summary>
+            Represents 202 (accepted) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode202AcceptedResolver.Resolve">
+            <summary>
+            Returns 202 (accepted) HTTP status code
+            </summary>
+            <returns>HTTP status code 202 (accepted)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode203NonAuthoritativeInformationResolver">
+            <summary>
+            Represents 203 (non authoritative information) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode203NonAuthoritativeInformationResolver.Resolve">
+            <summary>
+            Returns 203 (non authoritative information) HTTP status code
+            </summary>
+            <returns>HTTP status code 203 (non authoritative information)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode204NoContentResolver">
+            <summary>
+            Represents 204 (no content) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode204NoContentResolver.Resolve">
+            <summary>
+            Returns 204 (no content) HTTP status code
+            </summary>
+            <returns>HTTP status code 204 (no content)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode205ResetContentResolver">
+            <summary>
+            Represents 205 (reset content) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode205ResetContentResolver.Resolve">
+            <summary>
+            Returns 205 (reset content) HTTP status code
+            </summary>
+            <returns>HTTP status code 205 (reset content)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode206PartialContentResolver">
+            <summary>
+            Represents 206 (partial content) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode206PartialContentResolver.Resolve">
+            <summary>
+            Returns 206 (partial content) HTTP status code
+            </summary>
+            <returns>HTTP status code 206 (partial content)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode207MultiStatusResolver">
+            <summary>
+            Represents 207 (multi status) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode207MultiStatusResolver.Resolve">
+            <summary>
+            Returns 207 (multi status) HTTP status code
+            </summary>
+            <returns>HTTP status code 207 (multi status)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode208AlreadyReportedResolver">
+            <summary>
+            Represents 208 (already reported) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode208AlreadyReportedResolver.Resolve">
+            <summary>
+            Returns 208 (already reported) HTTP status code
+            </summary>
+            <returns>HTTP status code 208 (already reported)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode226IMUsedResolver">
+            <summary>
+            Represents 226 (IMUsed) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode226IMUsedResolver.Resolve">
+            <summary>
+            Returns 226 (IMUsed) HTTP status code
+            </summary>
+            <returns>HTTP status code 226 (IMUsed)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode300AmbiguousResolver">
+            <summary>
+            Represents 300 (ambiguous) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode300AmbiguousResolver.Resolve">
+            <summary>
+            Returns 300 (ambiguous) HTTP status code
+            </summary>
+            <returns>HTTP status code 300 (ambiguous)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode300MultipleChoicesResolver">
+            <summary>
+            Represents 300 (multiple choices) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode300MultipleChoicesResolver.Resolve">
+            <summary>
+            Returns 300 (multiple choices) HTTP status code
+            </summary>
+            <returns>HTTP status code 300 (multiple choices)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode301MovedPermanentlyResolver">
+            <summary>
+            Represents 301 (moved permanently) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode301MovedPermanentlyResolver.Resolve">
+            <summary>
+            Returns 301 (moved permanently) HTTP status code
+            </summary>
+            <returns>HTTP status code 301 (moved permanently)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode301MovedResolver">
+            <summary>
+            Represents 301 (moved) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode301MovedResolver.Resolve">
+            <summary>
+            Returns 301 (moved) HTTP status code
+            </summary>
+            <returns>HTTP status code 301 (moved)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode302FoundResolver">
+            <summary>
+            Represents 302 (found) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode302FoundResolver.Resolve">
+            <summary>
+            Returns 302 (found) HTTP status code
+            </summary>
+            <returns>HTTP status code 302 (found)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode302RedirectResolver">
+            <summary>
+            Represents 302 (redirect) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode302RedirectResolver.Resolve">
+            <summary>
+            Returns 302 (redirect) HTTP status code
+            </summary>
+            <returns>HTTP status code 302 (redirect)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode303RedirectMethodResolver">
+            <summary>
+            Represents 303 (redirect method) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode303RedirectMethodResolver.Resolve">
+            <summary>
+            Returns 303 (redirect method) HTTP status code
+            </summary>
+            <returns>HTTP status code 303 (redirect method)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode303SeeOtherResolver">
+            <summary>
+            Represents 303 (see other) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode303SeeOtherResolver.Resolve">
+            <summary>
+            Returns 303 (see other) HTTP status code
+            </summary>
+            <returns>HTTP status code 303 (see other)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode304NotModifiedResolver">
+            <summary>
+            Represents 304 (not modified) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode304NotModifiedResolver.Resolve">
+            <summary>
+            Returns 304 (not modified) HTTP status code
+            </summary>
+            <returns>HTTP status code 304 (not modified)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode305UseProxyResolver">
+            <summary>
+            Represents 305 (use proxy) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode305UseProxyResolver.Resolve">
+            <summary>
+            Returns 305 (use proxy) HTTP status code
+            </summary>
+            <returns>HTTP status code 305 (use proxy)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode306UnusedResolver">
+            <summary>
+            Represents 306 (unused) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode306UnusedResolver.Resolve">
+            <summary>
+            Returns 306 (unused) HTTP status code
+            </summary>
+            <returns>HTTP status code 306 (unused)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode307RedirectKeepVerbResolver">
+            <summary>
+            Represents 307 (redirect keep verb) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode307RedirectKeepVerbResolver.Resolve">
+            <summary>
+            Returns 307 (redirect keep verb) HTTP status code
+            </summary>
+            <returns>HTTP status code 307 (redirect keep verb)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode307TemporaryRedirectResolver">
+            <summary>
+            Represents 307 (temporary redirect) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode307TemporaryRedirectResolver.Resolve">
+            <summary>
+            Returns 307 (temporary redirect) HTTP status code
+            </summary>
+            <returns>HTTP status code 307 (temporary redirect)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode308PermanentRedirectResolver">
+            <summary>
+            Represents 308 (permanent redirect) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode308PermanentRedirectResolver.Resolve">
+            <summary>
+            Returns 308 (permanent redirect) HTTP status code
+            </summary>
+            <returns>HTTP status code 308 (permanent redirect)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode400BadRequestResolver">
+            <summary>
+            Represents 400 (bad request) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode400BadRequestResolver.Resolve">
+            <summary>
+            Returns 400 (bad request) HTTP status code
+            </summary>
+            <returns>HTTP status code 400 (bad request)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode401UnauthorizedResolver">
+            <summary>
+            Represents 401 (unauthorized) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode401UnauthorizedResolver.Resolve">
+            <summary>
+            Returns 401 (unauthorized) HTTP status code
+            </summary>
+            <returns>HTTP status code 401 (unauthorized)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode402PaymentRequiredResolver">
+            <summary>
+            Represents 402 (payment required) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode402PaymentRequiredResolver.Resolve">
+            <summary>
+            Returns 402 (payment required) HTTP status code
+            </summary>
+            <returns>HTTP status code 402 (payment required)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode403ForbiddenResolver">
+            <summary>
+            Represents 403 (forbidden) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode403ForbiddenResolver.Resolve">
+            <summary>
+            Returns 403 (forbidden) HTTP status code
+            </summary>
+            <returns>HTTP status code 403 (forbidden)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode404NotFoundResolver">
+            <summary>
+            Represents 404 (not found) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode404NotFoundResolver.Resolve">
+            <summary>
+            Returns 404 (not found) HTTP status code
+            </summary>
+            <returns>HTTP status code 404 (not found)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode405MethodNotAllowedResolver">
+            <summary>
+            Represents 405 (method not allowed) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode405MethodNotAllowedResolver.Resolve">
+            <summary>
+            Returns 405 (method not allowed) HTTP status code
+            </summary>
+            <returns>HTTP status code 405 (method not allowed)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode406NotAcceptableResolver">
+            <summary>
+            Represents 406 (not acceptable) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode406NotAcceptableResolver.Resolve">
+            <summary>
+            Returns 406 (not acceptable) HTTP status code
+            </summary>
+            <returns>HTTP status code 406 (not acceptable)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode407ProxyAuthenticationRequiredResolver">
+            <summary>
+            Represents 407 (proxy authentication required) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode407ProxyAuthenticationRequiredResolver.Resolve">
+            <summary>
+            Returns 407 (proxy authentication required) HTTP status code
+            </summary>
+            <returns>HTTP status code 407 (proxy authentication required)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode408RequestTimeoutResolver">
+            <summary>
+            Represents 408 (request timeout) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode408RequestTimeoutResolver.Resolve">
+            <summary>
+            Returns 408 (request timeout) HTTP status code
+            </summary>
+            <returns>HTTP status code 408 (request timeout)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode409ConflictResolver">
+            <summary>
+            Represents 409 (conflict) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode409ConflictResolver.Resolve">
+            <summary>
+            Returns 409 (conflict) HTTP status code
+            </summary>
+            <returns>HTTP status code 409 (conflict)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode410GoneResolver">
+            <summary>
+            Represents 410 (gone) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode410GoneResolver.Resolve">
+            <summary>
+            Returns 410 (gone) HTTP status code
+            </summary>
+            <returns>HTTP status code 410 (gone)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode411LengthRequiredResolver">
+            <summary>
+            Represents 411 (length required) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode411LengthRequiredResolver.Resolve">
+            <summary>
+            Returns 411 (length required) HTTP status code
+            </summary>
+            <returns>HTTP status code 411 (length required)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode412PreconditionFailedResolver">
+            <summary>
+            Represents 412 (precondition failed) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode412PreconditionFailedResolver.Resolve">
+            <summary>
+            Returns 412 (precondition failed) HTTP status code
+            </summary>
+            <returns>HTTP status code 412 (precondition failed)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode413RequestEntityTooLargeResolver">
+            <summary>
+            Represents 413 (request entity too large) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode413RequestEntityTooLargeResolver.Resolve">
+            <summary>
+            Returns 413 (request entity too large) HTTP status code
+            </summary>
+            <returns>HTTP status code 413 (request entity too large)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode414RequestUriTooLongResolver">
+            <summary>
+            Represents 414 (request URI too long) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode414RequestUriTooLongResolver.Resolve">
+            <summary>
+            Returns 414 (request URI too long) HTTP status code
+            </summary>
+            <returns>HTTP status code 414 (request URI too long)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode415UnsupportedMediaTypeResolver">
+            <summary>
+            Represents 415 (unsupported media type) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode415UnsupportedMediaTypeResolver.Resolve">
+            <summary>
+            Returns 415 (unsupported media type) HTTP status code
+            </summary>
+            <returns>HTTP status code 415 (unsupported media type)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode416RequestedRangeNotSatisfiableResolver">
+            <summary>
+            Represents 416 (requested range not satisfiable) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode416RequestedRangeNotSatisfiableResolver.Resolve">
+            <summary>
+            Returns 416 (requested range not satisfiable) HTTP status code
+            </summary>
+            <returns>HTTP status code 416 (requested range not satisfiable)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode417ExpectationFailedResolver">
+            <summary>
+            Represents 417 (expectation failed) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode417ExpectationFailedResolver.Resolve">
+            <summary>
+            Returns 417 (expectation failed) HTTP status code
+            </summary>
+            <returns>HTTP status code 417 (expectation failed)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode421MisdirectedRequestResolver">
+            <summary>
+            Represents 421 (misdirected request) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode421MisdirectedRequestResolver.Resolve">
+            <summary>
+            Returns 421 (misdirected request) HTTP status code
+            </summary>
+            <returns>HTTP status code 421 (misdirected request)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode422UnprocessableEntityResolver">
+            <summary>
+            Represents 422 (unprocessable entity) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode422UnprocessableEntityResolver.Resolve">
+            <summary>
+            Returns 422 (unprocessable entity) HTTP status code
+            </summary>
+            <returns>HTTP status code 422 (unprocessable entity)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode423LockedResolver">
+            <summary>
+            Represents 423 (locked) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode423LockedResolver.Resolve">
+            <summary>
+            Returns 423 (locked) HTTP status code
+            </summary>
+            <returns>HTTP status code 423 (locked)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode424FailedDependencyResolver">
+            <summary>
+            Represents 424 (failed dependency) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode424FailedDependencyResolver.Resolve">
+            <summary>
+            Returns 424 (failed dependency) HTTP status code
+            </summary>
+            <returns>HTTP status code 424 (failed dependency)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode426UpgradeRequiredResolver">
+            <summary>
+            Represents 426 (upgrade required) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode426UpgradeRequiredResolver.Resolve">
+            <summary>
+            Returns 426 (upgrade required) HTTP status code
+            </summary>
+            <returns>HTTP status code 426 (upgrade required)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode428PreconditionRequiredResolver">
+            <summary>
+            Represents 428 (precondition required) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode428PreconditionRequiredResolver.Resolve">
+            <summary>
+            Returns 428 (precondition required) HTTP status code
+            </summary>
+            <returns>HTTP status code 428 (precondition required)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode429TooManyRequestsResolver">
+            <summary>
+            Represents 429 (too many requests) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode429TooManyRequestsResolver.Resolve">
+            <summary>
+            Returns 429 (too many requests) HTTP status code
+            </summary>
+            <returns>HTTP status code 429 (too many requests)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode431RequestHeaderFieldsTooLargeResolver">
+            <summary>
+            Represents 431 (request header fields too large) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode431RequestHeaderFieldsTooLargeResolver.Resolve">
+            <summary>
+            Returns 431 (request header fields too large) HTTP status code
+            </summary>
+            <returns>HTTP status code 431 (request header fields too large)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode451UnavailableForLegalReasonsResolver">
+            <summary>
+            Represents 451 (unavailable for legal reasons) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode451UnavailableForLegalReasonsResolver.Resolve">
+            <summary>
+            Returns 451 (unavailable for legal reasons) HTTP status code
+            </summary>
+            <returns>HTTP status code 451 (unavailable for legal reasons)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode500InternalServerErrorResolver">
+            <summary>
+            Represents 500 (internal server error) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode500InternalServerErrorResolver.Resolve">
+            <summary>
+            Returns 500 (internal server error) HTTP status code
+            </summary>
+            <returns>HTTP status code 500 (internal server error)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode501NotImplementedResolver">
+            <summary>
+            Represents 501 (not implemented) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode501NotImplementedResolver.Resolve">
+            <summary>
+            Returns 501 (not implemented) HTTP status code
+            </summary>
+            <returns>HTTP status code 501 (not implemented)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode502BadGatewayResolver">
+            <summary>
+            Represents 502 (bad gateway) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode502BadGatewayResolver.Resolve">
+            <summary>
+            Returns 502 (bad gateway) HTTP status code
+            </summary>
+            <returns>HTTP status code 502 (bad gateway)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode503ServiceUnavailableResolver">
+            <summary>
+            Represents 503 (service unavailable) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode503ServiceUnavailableResolver.Resolve">
+            <summary>
+            Returns 503 (service unavailable) HTTP status code
+            </summary>
+            <returns>HTTP status code 503 (service unavailable)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode504GatewayTimeoutResolver">
+            <summary>
+            Represents 504 (gateway timeout) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode504GatewayTimeoutResolver.Resolve">
+            <summary>
+            Returns 504 (gateway timeout) HTTP status code
+            </summary>
+            <returns>HTTP status code 504 (gateway timeout)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode505HttpVersionNotSupportedResolver">
+            <summary>
+            Represents 505 (HTTP version not supported) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode505HttpVersionNotSupportedResolver.Resolve">
+            <summary>
+            Returns 505 (HTTP version not supported) HTTP status code
+            </summary>
+            <returns>HTTP status code 505 (HTTP version not supported)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode506VariantAlsoNegotiatesResolver">
+            <summary>
+            Represents 506 (variant also negotiates) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode506VariantAlsoNegotiatesResolver.Resolve">
+            <summary>
+            Returns 506 (variant also negotiates) HTTP status code
+            </summary>
+            <returns>HTTP status code 506 (variant also negotiates)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode507InsufficientStorageResolver">
+            <summary>
+            Represents 507 (insufficient storage) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode507InsufficientStorageResolver.Resolve">
+            <summary>
+            Returns 507 (insufficient storage) HTTP status code
+            </summary>
+            <returns>HTTP status code 507 (insufficient storage)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode508LoopDetectedResolver">
+            <summary>
+            Represents 508 (loop detected) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode508LoopDetectedResolver.Resolve">
+            <summary>
+            Returns 508 (loop detected) HTTP status code
+            </summary>
+            <returns>HTTP status code 508 (loop detected)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode510NotExtendedResolver">
+            <summary>
+            Represents 510 (not extended) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode510NotExtendedResolver.Resolve">
+            <summary>
+            Returns 510 (not extended) HTTP status code
+            </summary>
+            <returns>HTTP status code 510 (not extended)</returns>
+        </member>
+        <member name="T:Urkin.Web.StatusCode511NetworkAuthenticationRequiredResolver">
+            <summary>
+            Represents 511 (network authentication required) instance of the <see cref="T:Urkin.Web.IStatusCodeResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.StatusCode511NetworkAuthenticationRequiredResolver.Resolve">
+            <summary>
+            Returns 511 (network authentication required) HTTP status code
+            </summary>
+            <returns>HTTP status code 511 (network authentication required)</returns>
+        </member>
+        <member name="T:Urkin.Web.IStatusCodeResolver">
+            <summary>
+            Provides actions to resolve HTTP status code to return response to a client
+            </summary>
+        </member>
+        <member name="M:Urkin.Web.IStatusCodeResolver.Resolve">
+            <summary>
+            Returns specified HTTP status code
+            </summary>
+            <returns>Specified HTTP status code</returns>
+        </member>
+    </members>
+</doc>

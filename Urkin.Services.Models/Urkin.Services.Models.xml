@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Urkin.Services.Models</name>
+    </assembly>
+    <members>
+        <member name="T:Urkin.Models.ApplicationManagerResult">
+            <summary>
+            Provides application manager result
+            </summary>
+            <summary>
+            Provides application manager result types constants
+            </summary>
+        </member>
+        <member name="M:Urkin.Models.ApplicationManagerResult.#ctor(System.String)">
+            <summary>
+            Constructor initializes the type of the result
+            </summary>
+            <param name="type">The type of a result</param>
+        </member>
+        <member name="P:Urkin.Models.ApplicationManagerResult.Type">
+            <summary>
+            Gets the result type
+            </summary>
+        </member>
+        <member name="F:Urkin.Models.ApplicationManagerResult.FAIL">
+            <summary>
+            The type for a failed application manager result
+            </summary>
+        </member>
+        <member name="F:Urkin.Models.ApplicationManagerResult.SUCCESS">
+            <summary>
+            The type for a succeeded application manager result
+            </summary>
+        </member>
+        <member name="F:Urkin.Models.ApplicationManagerResult.EMPTY_RESULT">
+            <summary>
+            The type for an empty result application manager result
+            </summary>
+        </member>
+        <member name="F:Urkin.Models.ApplicationManagerResult.ENTITY_CREATED">
+            <summary>
+            The type for an entity created application manager result
+            </summary>
+        </member>
+        <member name="F:Urkin.Models.ApplicationManagerResult.ENTITY_NOT_FOUND">
+            <summary>
+            The type for an entity not found application manager result
+            </summary>
+        </member>
+        <member name="F:Urkin.Models.ApplicationManagerResult.INVALID_INPUT_DATA">
+            <summary>
+            The type for a invalid input data application manager result
+            </summary>
+        </member>
+        <member name="T:Urkin.Models.ApplicationManagerResult`1">
+            <summary>
+            Provides application manager result extended with data
+            </summary>
+            <typeparam name="TData">The data extending an application manager result</typeparam>
+        </member>
+        <member name="F:Urkin.Models.ApplicationManagerResult`1.data">
+            <summary>
+            The data value
+            </summary>
+        </member>
+        <member name="M:Urkin.Models.ApplicationManagerResult`1.#ctor(`0)">
+            <summary>
+            Constructor initializes a succeeded result extended with data
+            </summary>
+            <param name="data">The data value to extend result with</param>
+        </member>
+        <member name="M:Urkin.Models.ApplicationManagerResult`1.#ctor(`0,System.String)">
+            <summary>
+            Constructor initializes a typed result extended with data
+            </summary>
+            <param name="data">The data value to extend result with</param>
+            <param name="type">The type of a result</param>
+        </member>
+        <member name="P:Urkin.Models.ApplicationManagerResult`1.Data">
+            <summary>
+            Gets data
+            </summary>
+        </member>
+        <member name="T:Urkin.Models.IDataExtendable">
+            <summary>
+            Exposes the data
+            </summary>
+        </member>
+        <member name="P:Urkin.Models.IDataExtendable.Data">
+            <summary>
+            Gets the data
+            </summary>
+        </member>
+        <member name="T:Urkin.Models.ServiceNamesResult">
+            <summary>
+            Represents services names result
+            </summary>
+        </member>
+        <member name="M:Urkin.Models.ServiceNamesResult.#ctor">
+            <summary>
+            Initializes instance with empty names list
+            </summary>
+        </member>
+        <member name="M:Urkin.Models.ServiceNamesResult.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes services names
+            </summary>
+            <param name="items">Collection of services names</param>
+        </member>
+        <member name="P:Urkin.Models.ServiceNamesResult.Items">
+            <summary>
+            Gets services names
+            </summary>
+        </member>
+        <member name="T:Urkin.Models.ValidationResult">
+            <summary>
+            Represents validation result
+            </summary>
+        </member>
+        <member name="M:Urkin.Models.ValidationResult.#ctor">
+            <summary>
+            Initializes instance without messages
+            </summary>
+        </member>
+        <member name="M:Urkin.Models.ValidationResult.#ctor(System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.IEnumerable{System.String}})">
+            <summary>
+            Initializes validation messages
+            </summary>
+            <param name="messages">Messages value</param>
+        </member>
+        <member name="M:Urkin.Models.ValidationResult.#ctor(System.Boolean)">
+            <summary>
+            Initializes the stop propagation flag
+            </summary>
+        </member>
+        <member name="M:Urkin.Models.ValidationResult.#ctor(System.Boolean,System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.IEnumerable{System.String}})">
+            <summary>
+            Initializes validation messages and the stop propagation flag
+            </summary>
+            <param name="messages">Messages value</param>
+            <param name="stopPropagation">Stop propagation value</param>
+        </member>
+        <member name="P:Urkin.Models.ValidationResult.StopPropagation">
+            <summary>
+            Gets stop propagation flag
+            </summary>
+        </member>
+        <member name="P:Urkin.Models.ValidationResult.Success">
+            <summary>
+            Gets validation result flag
+            </summary>
+        </member>
+        <member name="P:Urkin.Models.ValidationResult.Messages">
+            <summary>
+            Gets validation messages
+            </summary>
+        </member>
+    </members>
+</doc>

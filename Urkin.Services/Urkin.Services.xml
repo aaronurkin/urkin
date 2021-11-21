@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Urkin.Services</name>
+    </assembly>
+    <members>
+        <member name="T:Urkin.Services.IApplicationManager`1">
+            <summary>
+            Implements business logic for a received data
+            </summary>
+            <typeparam name="TModel">The type of the received data</typeparam>
+        </member>
+        <member name="M:Urkin.Services.IApplicationManager`1.Manage(`0)">
+            <summary>
+            Encapsulates business logic for a received data
+            </summary>
+            <param name="model">The received data</param>
+            <returns>An instance of <see cref="T:Urkin.Models.ApplicationManagerResult"/> with the type of a result
+            or <seealso cref="T:Urkin.Models.ApplicationManagerResult`1"/>with the type of a result and data</returns>
+        </member>
+        <member name="T:Urkin.Services.EmptyResultServiceNamesResolver">
+            <summary>
+            Empty names collection implementation of the <see cref="T:Urkin.Services.IServiceNamesResolver"/>
+            </summary>
+        </member>
+        <member name="M:Urkin.Services.EmptyResultServiceNamesResolver.Resolve">
+            <summary>
+            Resolves services names
+            </summary>
+            <returns>The empty instance of the <see cref="T:Urkin.Models.ServiceNamesResult"/></returns>
+        </member>
+        <member name="T:Urkin.Services.IServiceNamesResolver">
+            <summary>
+            Provides actions to resolve services names based on application needs
+            </summary>
+        </member>
+        <member name="M:Urkin.Services.IServiceNamesResolver.Resolve">
+            <summary>
+            Resolves services names
+            </summary>
+            <returns>Collection of services names</returns>
+        </member>
+        <member name="T:Urkin.Services.DefaultValidator`1">
+            <summary>
+            Default validation logic
+            </summary>
+            <typeparam name="TValidatable">The type of the object to validate</typeparam>
+        </member>
+        <member name="M:Urkin.Services.DefaultValidator`1.#ctor(System.Collections.Generic.IEnumerable{Urkin.Services.IValidationHandler{`0}})">
+            <summary>
+            Initializes next validator in the chain
+            </summary>
+            <param name="handlers">Handlers chain</param>
+        </member>
+        <member name="P:Urkin.Services.DefaultValidator`1.Handlers">
+            <summary>
+            Gets the validation handlers chain
+            </summary>
+        </member>
+        <member name="M:Urkin.Services.DefaultValidator`1.Validate(`0)">
+            <summary>
+            Validates passed object
+            </summary>
+            <param name="validatable"></param>
+            <returns>The aggregated <see cref="T:Urkin.Models.ValidationResult"/></returns>
+        </member>
+        <member name="T:Urkin.Services.IValidationHandler`1">
+            <summary>
+            The concrete validator within the validation chain
+            </summary>
+            <typeparam name="TValidatable">The type of the object to validate</typeparam>
+        </member>
+        <member name="M:Urkin.Services.IValidationHandler`1.Validate(`0)">
+            <summary>
+            Validates passed object
+            </summary>
+            <param name="validatable">Object to validate</param>
+            <returns>The <see cref="T:Urkin.Models.ValidationResult"/> instance</returns>
+        </member>
+        <member name="T:Urkin.Services.IValidator`1">
+            <summary>
+            Generic objects validator
+            </summary>
+            <typeparam name="TValidatable">The type of the object to validate</typeparam>
+        </member>
+        <member name="M:Urkin.Services.IValidator`1.Validate(`0)">
+            <summary>
+            Validates object
+            </summary>
+            <param name="validatable">Object to validate</param>
+            <returns>The <see cref="T:Urkin.Models.ValidationResult"/> instance</returns>
+        </member>
+    </members>
+</doc>

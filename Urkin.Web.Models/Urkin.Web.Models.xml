@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Urkin.Web.Models</name>
+    </assembly>
+    <members>
+        <member name="T:Urkin.Models.HttpRequestHandlerResult">
+            <summary>
+            An HTTP request handler result
+            </summary>
+        </member>
+        <member name="M:Urkin.Models.HttpRequestHandlerResult.#ctor(System.Int32)">
+            <summary>
+            Constructor initializes HTTP status code
+            </summary>
+            <param name="statusCode"></param>
+        </member>
+        <member name="M:Urkin.Models.HttpRequestHandlerResult.#ctor(System.Object,System.Int32)">
+            <summary>
+            Constructor initializes HTTP status code and response data
+            </summary>
+            <param name="data">The response data</param>
+            <param name="statusCode">The response status code</param>
+        </member>
+        <member name="P:Urkin.Models.HttpRequestHandlerResult.Data">
+            <summary>
+            Gets response data
+            </summary>
+        </member>
+        <member name="P:Urkin.Models.HttpRequestHandlerResult.StatusCode">
+            <summary>
+            Gets response status code
+            </summary>
+        </member>
+    </members>
+</doc>

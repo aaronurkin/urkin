@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Urkin.DependencyInjection</name>
+    </assembly>
+    <members>
+        <member name="T:Urkin.DependencyInjection.IDependenciesResolver">
+            <summary>
+            Provides actions to resolve application dependencies
+            </summary>
+        </member>
+        <member name="M:Urkin.DependencyInjection.IDependenciesResolver.Resolve``1(System.Object[])">
+            <summary>
+            Retrieves a service from the DI container
+            </summary>
+            <typeparam name="TService">The type to which the result will be cast</typeparam>
+            <param name="constructorArguments">Constructor arguments</param>
+            <returns>The component instance that provides the service</returns>
+        </member>
+        <member name="M:Urkin.DependencyInjection.IDependenciesResolver.ResolveKeyed``1(System.Object[])">
+            <summary>
+            Retrieves a service from the DI container by a key
+            </summary>
+            <typeparam name="TService">The type to which the result will be cast</typeparam>
+            <param name="constructorArguments">The first argument is a key of the service. Other argument are constructor arguments</param>
+            <returns>The component instance that provides the service</returns>
+        </member>
+        <member name="M:Urkin.DependencyInjection.IDependenciesResolver.ResolveNamed``1(System.Collections.Generic.IEnumerable{System.String},System.Object[])">
+            <summary>
+            Retrieves a service from the DI container by the first appearance of a name from the names parameter 
+            </summary>
+            <typeparam name="TService">The type to which the result will be cast</typeparam>
+            <param name="names">Collection of names to retrieve a service by</param>
+            <param name="constructorArguments">Constructor arguments</param>
+            <returns>The component instance that provides the service</returns>
+        </member>
+        <member name="M:Urkin.DependencyInjection.IDependenciesResolver.ResolveAll``1">
+            <summary>
+            Retrieves all implementations of a service from the DI container
+            </summary>
+            <typeparam name="TService">The type to which the result will be cast</typeparam>
+            <returns>The collection of the service instances</returns>
+        </member>
+        <member name="M:Urkin.DependencyInjection.IDependenciesResolver.ResolveAllKeyed``1(System.Object)">
+            <summary>
+            Retrieves all implementations of a service from the DI container by a key
+            </summary>
+            <typeparam name="TService">The type to which the result will be cast</typeparam>
+            <param name="key">The key to retrieve a service by</param>
+            <returns>The collection of the service instances</returns>
+        </member>
+        <member name="M:Urkin.DependencyInjection.IDependenciesResolver.ResolveAllNamed``1(System.String[])">
+            <summary>
+            Retrieves all implementations of a service from the DI container by the first appearance of a name from the names parameter 
+            </summary>
+            <typeparam name="TService">The type to which the service will be cast</typeparam>
+            <param name="names">Collection of names to retrieve a service by</param>
+            <returns>The collection of the service instances</returns>
+        </member>
+    </members>
+</doc>

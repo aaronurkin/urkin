@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Urkin.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:System.Reflection.AssemblyExtensions">
+            <summary>
+            Provides a set of static methods extending the <see cref="T:System.Reflection.Assembly"/> class
+            </summary>
+        </member>
+        <member name="M:System.Reflection.AssemblyExtensions.GetReferencedAssemblies(System.Reflection.Assembly,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Recursively finds all referenced assemblies of the specified assembly
+            </summary>
+            <param name="assembly">An assembly to find referenced assemblies</param>
+            <param name="configuration">Application configuration containing project name separator value</param>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1"/> that contains referenced assemblies</returns>
+            <exception cref="T:Urkin.Exceptions.ApplicationSettingsKeyMissingException"></exception>
+        </member>
+    </members>
+</doc>
