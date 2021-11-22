@@ -10,34 +10,47 @@ namespace System.Reflection
     public static partial class AssemblyExtensions
     {
         /// <summary>
-        /// Recursively finds all referenced assemblies of the specified assembly
+        /// Finds all referenced assemblies of the specified assembly
         /// </summary>
-        /// <param name="assembly">An assembly to find referenced assemblies</param>
-        /// <param name="configuration">Application configuration containing project name separator value</param>
+        /// <param name="source">An assembly to find referenced assemblies</param>
+        /// <param name="configuration">Application configuration containing project name separator value with the 'ProjectNameSeparator' key</param>
         /// <returns>A <see cref="IEnumerable{Assembly}"/> that contains referenced assemblies</returns>
-        public static IEnumerable<Assembly> GetReferencedAssemblies(this Assembly assembly, IConfiguration configuration)
+        public static IEnumerable<Assembly> GetReferencedAssemblies(this Assembly source, IConfiguration configuration)
         {
+            var processed = new HashSet<string>();
+            var assemblies = new Queue<Assembly>(new[] { source });
             string projectNameSeparator = configuration["ProjectNameSeparator"];
 
             var pattern = string.IsNullOrEmpty(projectNameSeparator)
                 ? null
-                : assembly.FullName
-                    .Substring(0, assembly.FullName.IndexOf(projectNameSeparator, StringComparison.Ordinal));
+                : source.FullName
+                    .Substring(0, source.FullName.IndexOf(projectNameSeparator, StringComparison.Ordinal));
 
-            var referencedAssemblies = assembly.GetReferencedAssemblies()
-                .Where(a => pattern == null || a.FullName.StartsWith(pattern))
-                .Select(filteredAssembly => filteredAssembly.FullName)
-                .Distinct()
-                .SelectMany(name =>
+            while (assemblies.Any())
+            {
+                var assembly = assemblies.Dequeue();
+
+                if (processed.Add(assembly.FullName))
                 {
-                    var currentAssembly = Assembly.Load(name);
-                    return new HashSet<Assembly>(
-                        GetReferencedAssemblies(currentAssembly, configuration).Prepend(currentAssembly),
-                        new AssemblyEqualityComparer()
-                    );
-                });
+                    var references = assembly.GetReferencedAssemblies()
+                        .Where(a => !a.FullName.StartsWith("Urkin."))
+                        .Where(a => !a.FullName.StartsWith("System."))
+                        .Where(a => !a.FullName.StartsWith("Microsoft."))
+                        .Where(a => !a.FullName.StartsWith("netstandard"))
+                        .Where(a => pattern == null || a.FullName.StartsWith(pattern))
+                        .Select(a => a.FullName)
+                        .Distinct();
 
-            return referencedAssemblies.Prepend(assembly);
+                    foreach (var reference in references)
+                    {
+                        assemblies.Enqueue(Assembly.Load(reference));
+                    }
+
+                    yield return assembly;
+                }
+            }
+
+            processed.Clear();
         }
     }
 }
