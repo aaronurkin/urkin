@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
-using Urkin.Exceptions;
 
 namespace System.Reflection
 {
@@ -16,35 +15,29 @@ namespace System.Reflection
         /// <param name="assembly">An assembly to find referenced assemblies</param>
         /// <param name="configuration">Application configuration containing project name separator value</param>
         /// <returns>A <see cref="IEnumerable{Assembly}"/> that contains referenced assemblies</returns>
-        /// <exception cref="ApplicationSettingsKeyMissingException"></exception>
         public static IEnumerable<Assembly> GetReferencedAssemblies(this Assembly assembly, IConfiguration configuration)
         {
-            const string PROJECT_NAME_SEPARATOR_KEY = "ProjectNameSeparator";
-            string projectNameSeparator = configuration[PROJECT_NAME_SEPARATOR_KEY];
+            string projectNameSeparator = configuration["ProjectNameSeparator"];
 
-            if (string.IsNullOrEmpty(projectNameSeparator))
-            {
-                throw new ApplicationSettingsKeyMissingException(PROJECT_NAME_SEPARATOR_KEY);
-            }
-
-            var assemblies = new List<Assembly>();
-            var pattern = assembly.FullName
-                .Substring(0, assembly.FullName.IndexOf(projectNameSeparator, StringComparison.Ordinal));
+            var pattern = string.IsNullOrEmpty(projectNameSeparator)
+                ? null
+                : assembly.FullName
+                    .Substring(0, assembly.FullName.IndexOf(projectNameSeparator, StringComparison.Ordinal));
 
             var referencedAssemblies = assembly.GetReferencedAssemblies()
-                .Where(referencedAssembly => referencedAssembly.FullName.StartsWith(pattern))
+                .Where(a => pattern == null || a.FullName.StartsWith(pattern))
                 .Select(filteredAssembly => filteredAssembly.FullName)
                 .Distinct()
-                .Select(a => Assembly.Load(a));
+                .SelectMany(name =>
+                {
+                    var currentAssembly = Assembly.Load(name);
+                    return new HashSet<Assembly>(
+                        GetReferencedAssemblies(currentAssembly, configuration).Prepend(currentAssembly),
+                        new AssemblyEqualityComparer()
+                    );
+                });
 
-            assemblies.AddRange(referencedAssemblies);
-
-            foreach (Assembly referencedAssembly in referencedAssemblies)
-            {
-                assemblies.AddRange(GetReferencedAssemblies(referencedAssembly, configuration));
-            }
-
-            return assemblies.Distinct();
+            return referencedAssemblies.Prepend(assembly);
         }
     }
 }
